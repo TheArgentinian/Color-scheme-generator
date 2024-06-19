@@ -3,16 +3,13 @@ const schemeSelector = document.getElementById("scheme-selector")
 const colorsRender = document.getElementById("colors-render")
 const schemeButton = document.getElementById('scheme-button')
 
-console.log(colorSelector.value)
-
 schemeSelector.addEventListener("click", getColors)
 
 function getColors(){
      fetch(`https://www.thecolorapi.com/scheme?hex=${colorSelector.value.substr(-6)}&mode=${schemeSelector.value}&count=5`)
     .then(response => response.json())
     .then(data => {
-        //renderColors(data.colors)
-        console.log(data)
+        renderColors(data.colors)
     })
 }
 
