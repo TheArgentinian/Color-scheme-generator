@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <script src="index.js" defer type="text/javascript"></script>
     <title>Generador de esquema de colores</title>
 </head>
 
@@ -14,19 +14,11 @@
     <div class="container">
         <header>
             <input type="color" id="color-sel">
-            <select class="options" id="scheme-selector">
-                <option value="monochrome">Monochrome</option>
-                <option value="monochrome-dark">Monochrome-dark</option>
-                <option value="monochrome-light">Monochrome-light</option>
-                <option value="analogic">Analogic</option>
-                <option value="complement">Complement</option>
-                <option value="analogic-complement">Analogic-complement</option>
-                <option value="triad">Triad</option>
+            <select class="options" id="scheme-selector">                
             </select>
-            <button id="scheme-button" onclick="getColors()">Obtener esquema de colores</button>
+            <button id="scheme-button">Obtener esquema de colores</button>
         </header>
         <main id="colors-render">
-
         </main>
     </div>
 </body>
