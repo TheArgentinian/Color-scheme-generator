@@ -3,18 +3,24 @@ const schemeSelector = document.getElementById("scheme-selector")
 const colorsRender = document.getElementById("colors-render")
 const schemeButton = document.getElementById('scheme-button')
 const test = document.getElementById("test")
-let schemes = []
+
+
+let schemes = undefined
 getColors()
+
 
 schemeButton.addEventListener("click", getColors)
 
 function getColors(){
-     fetch(`https://www.thecolorapi.com/scheme?hex=${colorSelector.value.substr(-6)}&mode=${schemeSelector.value}&count=5`)
+     fetch(`https://www.thecolorapi.com/scheme?hex=${colorSelector.value.slice(1)}&mode=${schemeSelector.value}&count=5`)
     .then(response => response.json())
     .then(data => {
         renderColors(data.colors)
+
+        if (!schemes){
         schemes = data._links.schemes
-        getSchemeColors()
+        getColorSchemes()
+    }
     })
 }
 
@@ -26,15 +32,26 @@ function renderColors(colorsArray){
                 <div class="color-name">${color.name.value}</div>
             </div>
         `
-    })
+    }
+).join("")
 }
 
-function getSchemeColors(){
-    Object.entries(schemes).map(([key, value]) => (            
+function getColorSchemes(){
+    
+    for(let key in schemes){
+        console.log(key)
         schemeSelector.innerHTML += `
-        <option value=${value}>${key}</option>
+        <option value=${key}>${key}</option>
         `
-    )
-)
+
+      // diferente método para cuando necesite el valor
+
+        /*     Object.entries(schemes).map(([key, value]) => (            
+                schemeSelector.innerHTML += `
+                <option value=${key}>${key}</option>
+                `
+            )
+        ) */
+}
 }
 
