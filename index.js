@@ -27,10 +27,12 @@ function getColors(){
 
 function renderColors(colorsArray){
     colorsRender.innerHTML = colorsArray.map(color => { 
-        return `<div class="colors" 
+        return `
+                <div class="colors" 
                 style="background-color: ${color.hex.value}">
                 <div class="color-name">${color.name.value}</div>
-            </div>
+                <p class="color-hex">${color.hex.value}</p>
+                </div>
         `
     }
 ).join("")
@@ -39,12 +41,12 @@ function renderColors(colorsArray){
 function getColorSchemes(){
     
     for(let key in schemes){
-        console.log(key)
+        const keyName = key.charAt(0).toUpperCase() + key.slice(1)
         schemeSelector.innerHTML += `
-        <option value=${key}>${key}</option>
+        <option value=${key}>${keyName}</option>
         `
 
-      // diferente método para cuando necesite el valor
+      // método diferente para cuando necesite el valor
 
         /*     Object.entries(schemes).map(([key, value]) => (            
                 schemeSelector.innerHTML += `
