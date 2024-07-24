@@ -3,6 +3,7 @@ const schemeSelector = document.getElementById("scheme-selector")
 const colorsRender = document.getElementById("colors-render")
 const schemeButton = document.getElementById('scheme-button')
 const test = document.getElementById("test")
+const hexValArray = document.getElementsByClassName("color-hex")
 
 
 let schemes = undefined
@@ -31,8 +32,9 @@ function renderColors(colorsArray){
                 <div class="colors" 
                 style="background-color: ${color.hex.value}">
                 <div class="color-name">${color.name.value}</div>
-                <p class="color-hex">${color.hex.value}</p>
+                <p class="color-hex" onclick="copyText('${color.hex.value}'); toastMsg()">${color.hex.value}</p>
                 </div>
+                <div id="snackbar">Copiado...</div>
         `
     }
 ).join("")
@@ -57,3 +59,12 @@ function getColorSchemes(){
 }
 }
 
+function copyText(str) {
+    navigator.clipboard.writeText(str)
+}
+
+function toastMsg() {
+    let x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
