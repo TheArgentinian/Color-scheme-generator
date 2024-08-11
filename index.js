@@ -32,7 +32,7 @@ function renderColors(colorsArray){
                 <div class="colors" 
                 style="background-color: ${color.hex.value}">
                 <div class="color-name">${color.name.value}</div>
-                <p class="color-hex" onclick="copyText('${color.hex.value}'); toastMsg()">${color.hex.value}</p>
+                <p class="color-hex" onclick="copyText('${color.hex.value}'); snackbarMsg()">${color.hex.value}</p>
                 </div>
                 <div id="snackbar">Copiado...</div>
         `
@@ -63,7 +63,7 @@ function copyText(str) {
     navigator.clipboard.writeText(str)
 }
 
-function toastMsg() {
+function snackbarMsg() {
     let x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
